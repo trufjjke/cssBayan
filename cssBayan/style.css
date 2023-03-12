@@ -1,0 +1,60 @@
+body {
+   font-size: 10px;
+   background-color: rgb(255, 245, 177);
+}
+
+section {
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+   font-size: 2.5rem;
+}
+
+input {
+   appearance: none;
+}
+
+label {
+   cursor: pointer;
+}
+
+.wrapper {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin: 0 auto;
+   max-width: 500px;
+}
+
+.wrapper-content {
+
+   color: rgb(89, 89, 253);
+}
+
+.wrapper-content:hover {
+   transition: ease-in-out 0.3s;
+   color: black;
+}
+
+.item {
+   font-size: 1.5rem;
+}
+
+.content {
+   display: none;
+}
+
+
+label:active {
+   color: rgb(89, 89, 253);
+   transition: color .1s ease-in-out
+}
+
+input:checked~.content {
+   display: block;
+}
+
+.item:hover>.content {
+   display: block;
+}
