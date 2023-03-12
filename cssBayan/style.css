@@ -1,3 +1,10 @@
+/* base */
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
 body {
    font-size: 10px;
    background-color: rgb(255, 245, 177);
@@ -8,53 +15,136 @@ section {
 }
 
 h1 {
+   text-align: center;
    font-size: 2.5rem;
 }
 
 input {
-   appearance: none;
+   width: 0;
+   height: 0;
+   visibility: hidden;
 }
 
 label {
    cursor: pointer;
 }
 
+.label-title {
+   flex: 1 1 auto;
+   font-weight: 600;
+   padding: 5px 0;
+   display: block;
+   color: rgb(89, 89, 253);
+
+}
+
+/*      classes     */
 .wrapper {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
    margin: 0 auto;
    max-width: 500px;
 }
 
-.wrapper-content {
-
-   color: rgb(89, 89, 253);
-}
-
-.wrapper-content:hover {
-   transition: ease-in-out 0.3s;
-   color: black;
-}
-
 .item {
-   font-size: 1.5rem;
+   font-size: 2rem;
+
 }
 
-.content {
+.label-wrapper {
+   border-top: 1px solid rgba(0, 0, 0, 0.504);
+   display: flex;
+   justify-content: space-between;
+}
+
+.ico {
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 25px;
+   height: 25px;
    display: none;
 }
 
-
-label:active {
-   color: rgb(89, 89, 253);
-   transition: color .1s ease-in-out
+.content {
+   cursor: pointer;
+   margin: 10px auto;
+   background-size: contain;
+   background-repeat: no-repeat;
+   display: none;
 }
 
-input:checked~.content {
+.content:last-child {
+   margin-bottom: 0;
+}
+
+/*     media    */
+
+@media (min-width:769px) {
+
+
+
+   .content {
+      width: 60%;
+   }
+}
+
+@media (min-width: 768px) {
+   .wrapper-content:hover label {
+      transition: all ease-in-out 0.3s;
+
+      color: black;
+   }
+
+   .wrapper-content:hover .label-wrapper>.ico {
+      transition: all 0.3s ease-in-out;
+      display: block;
+      background-image: url(img/add.png);
+   }
+
+   .item:hover>label>.content {
+      transition: all 0.3s ease-in-out;
+      display: block;
+   }
+
+   .item:hover>.label-wrapper>.ico {
+      transition: all 0.3s ease-in-out;
+      background-image: url(img/added.png);
+   }
+
+}
+
+@media (max-width: 768px) {
+   .content {
+      width: 320px;
+      height: 320px;
+   }
+
+   label {
+      font-size: 2.5rem;
+   }
+
+   .item:not(:first-child) {
+      margin: 3rem 0;
+   }
+}
+
+@media (max-width: 524px) {
+   label {
+      font-size: 2rem;
+   }
+}
+
+/* base animation */
+input[type="radio"]:checked~.label-wrapper>label {
+   color: black;
+}
+
+input[type="radio"]:checked~.label-wrapper>.ico {
+   transition: all .2s ease-in-out;
    display: block;
+   background-image: url(img/added.png);
 }
 
-.item:hover>.content {
+input:checked~label>.content {
+   transition: all 0.3s ease-in-out;
+   opacity: 1;
    display: block;
 }
