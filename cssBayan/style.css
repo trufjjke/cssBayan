@@ -26,8 +26,11 @@ input {
 }
 
 label {
+   display: block;
    cursor: pointer;
 }
+
+
 
 .label-title {
    flex: 1 1 auto;
@@ -45,7 +48,7 @@ label {
 }
 
 .item {
-   font-size: 2rem;
+   font-size: 2.3rem;
 
 }
 
@@ -53,6 +56,7 @@ label {
    border-top: 1px solid rgba(0, 0, 0, 0.504);
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 
 .ico {
@@ -63,12 +67,20 @@ label {
    display: none;
 }
 
+.label-content {
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+
 .content {
+
+   max-height: 0px;
+   overflow: hidden;
+   transition: all .5s ease-out;
    cursor: pointer;
    margin: 10px auto;
-   background-size: contain;
-   background-repeat: no-repeat;
-   display: none;
+
 }
 
 .content:last-child {
@@ -77,30 +89,24 @@ label {
 
 /*     media    */
 
-@media (min-width:769px) {
 
 
+@media (min-width: 769px) {
 
-   .content {
-      width: 60%;
-   }
-}
-
-@media (min-width: 768px) {
    .wrapper-content:hover label {
       transition: all ease-in-out 0.3s;
-
       color: black;
    }
 
    .wrapper-content:hover .label-wrapper>.ico {
       transition: all 0.3s ease-in-out;
+
       display: block;
       background-image: url(img/add.png);
    }
 
    .item:hover>label>.content {
-      transition: all 0.3s ease-in-out;
+      max-height: 300px;
       display: block;
    }
 
@@ -109,26 +115,42 @@ label {
       background-image: url(img/added.png);
    }
 
+   input:checked~label>.content {
+      max-height: 300px;
+      display: block;
+   }
+
+
 }
 
 @media (max-width: 768px) {
-   .content {
-      width: 320px;
-      height: 320px;
+   input:checked~label>.content {
+      max-height: 320px;
+      display: block;
    }
 
-   label {
-      font-size: 2.5rem;
+   .item {
+      font-size: 2.4rem;
+
    }
 
-   .item:not(:first-child) {
-      margin: 3rem 0;
-   }
+
 }
 
-@media (max-width: 524px) {
-   label {
-      font-size: 2rem;
+@media (max-width: 430px) {
+   input:checked~label>.content {
+      max-height: 340px;
+      display: block;
+   }
+
+   div {
+      margin: 0;
+   }
+
+
+   .item {
+      font-size: 2.5rem;
+
    }
 }
 
@@ -141,10 +163,4 @@ input[type="radio"]:checked~.label-wrapper>.ico {
    transition: all .2s ease-in-out;
    display: block;
    background-image: url(img/added.png);
-}
-
-input:checked~label>.content {
-   transition: all 0.3s ease-in-out;
-   opacity: 1;
-   display: block;
 }
