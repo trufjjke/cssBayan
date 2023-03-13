@@ -24,7 +24,10 @@ input {
    height: 0;
    visibility: hidden;
 }
+strong{
 
+display:none;
+}
 label {
    display: block;
    cursor: pointer;
@@ -92,7 +95,12 @@ label {
 
 
 @media (min-width: 769px) {
-
+strong{
+   display: block;
+   text-align: center;
+   margin: 0 auto;
+   font-size: 2rem;
+}
    .wrapper-content:hover label {
       transition: all ease-in-out 0.3s;
       color: black;
